@@ -1,0 +1,22 @@
+services:
+  db-mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - perfume-network
+  perfume-backend:
+    image: sabeshragav/engaging-enchanteur-perfume-backend:latest
+    ports:
+      - "5000:5000"
+    networks:
+      - perfume-network
+
+  perfume-frontend:
+    image: sabeshragav/engaging-enchanteur-perfume-frontend:latest
+    ports:
+      - "3000:80"
+
+networks:
+  perfume-network:
+    driver: bridge
